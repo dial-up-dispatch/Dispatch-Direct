@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>the void</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Outer Shell: applies active theme and CRT scanline filter container -->
+  <div id="crt-shell" class="theme-expanse crt-shell-container">
+    
+    <!-- Screen Wipe Visual Transition Overlay (hidden by default) -->
+    <div id="screen-wipe" class="screen-wipe hidden"></div>
+
+    <!-- Main Content Container: holds the interactive text release interface -->
+    <div id="main-screen" class="main-screen-container">
+      <div class="interactive-wrapper">
+        
+        <!-- Input area: wraps the block cursor, textarea, and dynamic dissolve overlay -->
+        <div id="input-container" class="input-container">
+          
+          <!-- Blinking block cursor (visible only when textarea is empty and focused/waiting) -->
+          <div id="blinking-cursor-wrapper" class="blinking-cursor-wrapper">
+            <span class="blinking-cursor"></span>
+          </div>
+
+          <!-- The Textarea thought input -->
+          <label for="void-input" class="sr-only">type your thought</label>
+          <textarea
+            id="void-input"
+            rows="1"
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder=""
+          ></textarea>
+
+          <!-- Evaporating Dissolve Animation Overlay (hidden by default) -->
+          <div id="dissolve-overlay" class="dissolve-overlay hidden">
+            <div class="dissolve-scanline animate-scanline-sweep"></div>
+            <div id="dissolve-text" class="dissolve-text animate-text-dissolve"></div>
+          </div>
+
+        </div>
+
+        <!-- Release Affordance Trigger button -->
+        <div id="send-btn" role="button" aria-label="send" class="send-affordance">
+          [ ENTER ]
+        </div>
+
+      </div>
+
+      <!-- Post-release Acknowledgment display (hidden by default) -->
+      <div id="response-display" class="response-display hidden"></div>
+
+      <!-- Main screen footer cluster -->
+      <div class="footer-cluster">
+        <button id="settings-open-btn" class="footer-btn" aria-label="open settings">
+          [ SETTINGS ]
+        </button>
+        <div class="brand-label">DIAL UP DISPATCH</div>
+      </div>
+    </div>
+
+    <!-- Settings Dashboard Screen (hidden by default) -->
+    <div id="settings-screen" class="settings-screen-container hidden">
+      <div class="settings-content-wrapper">
+        
+        <!-- Return/Close settings button -->
+        <button id="settings-close-btn" class="settings-back-btn" aria-label="back to void">
+          [ BACK ]
+        </button>
+
+        <h1 class="settings-title">THIS VOID IS YOURS</h1>
+
+        <!-- Section 1: Signal Themes (Color Atmospheres) -->
+        <section class="settings-section">
+          <p class="settings-section-caption">choose your signal.</p>
+          <div class="settings-options-list">
+            
+            <button id="theme-expanse-btn" class="settings-option settings-option--selected" data-value="expanse">
+              <span class="settings-option-indicator">●</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">the expanse</span>
+                <span class="settings-option-description">cold. vast. the quiet between stars.</span>
+              </div>
+            </button>
+
+            <button id="theme-deep-btn" class="settings-option" data-value="deep">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">the deep</span>
+                <span class="settings-option-description">ancient. weighted. something older than words.</span>
+              </div>
+            </button>
+
+            <button id="theme-crimson-nebula-btn" class="settings-option" data-value="crimson-nebula">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">crimson nebula</span>
+                <span class="settings-option-description">slow burn. distant light. something ending, beautifully.</span>
+              </div>
+            </button>
+
+          </div>
+        </section>
+
+        <!-- Section 2: Reception Mode -->
+        <section class="settings-section">
+          <p class="settings-section-caption">does she speak, or absorb in silence?</p>
+          <div class="settings-options-list">
+
+            <button id="reception-silence-btn" class="settings-option settings-option--selected" data-value="silence">
+              <span class="settings-option-indicator">●</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">silence</span>
+                <span class="settings-option-description">she receives. the dark is the answer.</span>
+              </div>
+            </button>
+
+            <button id="reception-acknowledgment-btn" class="settings-option" data-value="acknowledgment">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">acknowledgment</span>
+                <span class="settings-option-description">she receives. she says one small thing.</span>
+              </div>
+            </button>
+
+          </div>
+        </section>
+
+        <!-- Section 3: Retention Options -->
+        <section class="settings-section">
+          <p class="settings-section-caption">does she count, or forget?</p>
+          <div class="settings-options-list">
+
+            <button id="retention-forget-btn" class="settings-option settings-option--selected" data-value="false">
+              <span class="settings-option-indicator">●</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">the void forgets</span>
+                <span class="settings-option-description">it happened. that's enough.</span>
+              </div>
+            </button>
+
+            <button id="retention-remember-btn" class="settings-option" data-value="true">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">the void remembers</span>
+                <span class="settings-option-description">just a number. nothing more.</span>
+              </div>
+            </button>
+
+          </div>
+
+          <!-- Retention Metric Archive Block (hidden by default, toggled via settings) -->
+          <div id="archive-block" class="archive-block hidden">
+            <div class="archive-title">THE VOID HAS RECEIVED</div>
+            <div id="archive-count" class="archive-count">0</div>
+            <div class="archive-dates">
+              <div id="first-transmission-time">first transmission: —</div>
+              <div id="most-recent-time">most recent: —</div>
+            </div>
+
+            <!-- Initial Archive deletion trigger -->
+            <button id="archive-clear-btn" class="archive-clear-btn">[ clear ]</button>
+
+            <!-- Deletion Double-Confirmation Screen (hidden by default) -->
+            <div id="archive-confirm-block" class="archive-confirm hidden">
+              <div>this will forget everything.</div>
+              <div>are you sure?</div>
+              <div class="archive-confirm-actions">
+                <button id="archive-confirm-yes" class="archive-clear-btn">[ yes, forget ]</button>
+                <button id="archive-confirm-no" class="archive-clear-btn">[ keep it ]</button>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Section 4: Sound Preference -->
+        <section class="settings-section">
+          <p class="settings-section-caption">does she have a voice at all?</p>
+          <div class="settings-options-list">
+
+            <button id="sound-ambient-btn" class="settings-option settings-option--selected" data-value="false">
+              <span class="settings-option-indicator">●</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">ambient</span>
+                <span class="settings-option-description">the keys speak. the departure has a sound.</span>
+              </div>
+            </button>
+
+            <button id="sound-silent-btn" class="settings-option" data-value="true">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">silent</span>
+                <span class="settings-option-description">no sound. just the dark and the words.</span>
+              </div>
+            </button>
+
+          </div>
+        </section>
+
+        <!-- Section 5: Generative Ambience Mode -->
+        <section class="settings-section">
+          <p class="settings-section-caption">does she breathe?</p>
+          <div class="settings-options-list">
+
+            <button id="ambience-off-btn" class="settings-option settings-option--selected" data-value="off">
+              <span class="settings-option-indicator">●</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">silence</span>
+                <span class="settings-option-description">just the dark.</span>
+              </div>
+            </button>
+
+            <button id="ambience-tonal-btn" class="settings-option" data-value="tonal">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">the drone</span>
+                <span class="settings-option-description">tones. deep. something ancient underneath.</span>
+              </div>
+            </button>
+
+            <button id="ambience-textured-btn" class="settings-option" data-value="textured">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">the texture</span>
+                <span class="settings-option-description">noise shaped into something vast and soft.</span>
+              </div>
+            </button>
+
+            <button id="ambience-both-btn" class="settings-option" data-value="both">
+              <span class="settings-option-indicator">○</span>
+              <div class="settings-option-content">
+                <span class="settings-option-label">both</span>
+                <span class="settings-option-description">the drone inside the dark. the full depth.</span>
+              </div>
+            </button>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Retro CRT Ambient Scanline Overlay (always active) -->
+    <div class="screen-effects"></div>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
