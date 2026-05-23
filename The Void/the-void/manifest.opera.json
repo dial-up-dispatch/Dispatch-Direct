@@ -3,8 +3,7 @@
   "name": "The Void",
   "version": "1.0.0",
   "description": "A private release space for intrusive thoughts. Type what's in your head. Press Enter. Watch it dissolve. The void stores nothing.",
-  "permissions": ["storage", "sidePanel"],
-  "action": {
+  "sidebar_action": {
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png",
@@ -12,14 +11,10 @@
       "64": "icons/icon-64.png",
       "128": "icons/icon-128.png"
     },
+    "default_panel": "panel.html",
     "default_title": "The Void"
   },
-  "side_panel": {
-    "default_path": "panel.html"
-  },
-  "background": {
-    "service_worker": "background.js"
-  },
+  "permissions": ["storage"],
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",

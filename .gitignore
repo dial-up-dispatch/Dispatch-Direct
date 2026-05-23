@@ -9,3 +9,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local development manifest (copy of target manifest for unpacked loading)
+**/manifest.json
