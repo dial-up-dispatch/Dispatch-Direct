@@ -1,0 +1,150 @@
+/**
+ * Dispatch Direct — dispatch-core.css
+ * Universal reset, extension-safe baseline floor, and accessibility utilities.
+ * 
+ * Defines standard scrollbars and focus rings that scale automatically with signals.
+ */
+
+/* ==========================================
+ * 1. Base Reset & Box Model
+ * ========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    /* Prevents rubber banding/scrolling in extension sidebars */
+    overflow: hidden;
+    font-size: 16px;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: var(--dd-bg);
+    color: var(--dd-text);
+    font-family: var(--dd-font-mono);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Base resets for interactive elements in extension panels */
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ==========================================
+ * 2. Accessible Focus Outline Architecture
+ * ========================================== */
+/* Standardizes keyboard focus across all opt-in elements without custom hacks */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 1px solid var(--dd-border-active) !important;
+    outline-offset: 3px !important;
+    box-shadow: var(--dd-shadow-glow) !important;
+}
+
+/* Disable default browser focus if it clashes, but ensure focus-visible is maintained */
+button:focus, input:focus, select:focus, textarea:focus {
+    outline: none;
+}
+
+/* ==========================================
+ * 3. Themed Retro Scrollbars & Scrollbar Utilities
+ * ========================================== */
+/* Webkit Scrollbars (Chrome, Vivaldi, Brave, Edge, Opera) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--dd-border);
+    border: 1px solid var(--dd-border-muted);
+    border-radius: var(--dd-radius-sm);
+    transition: background-color var(--dd-transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dd-accent-soft);
+    box-shadow: var(--dd-shadow-glow);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--dd-accent);
+}
+
+/* Firefox scrollbars */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--dd-border) rgba(0, 0, 0, 0.15);
+}
+
+/* Scrollbar visibility utilities */
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-none {
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+/* Themed Thin Scrollbar (CRT Aesthetic) */
+.scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: var(--dd-border);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--dd-accent);
+    border-radius: var(--dd-radius-sm);
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--dd-text-bright);
+}
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--dd-accent) var(--dd-border);
+}
+
+/* ==========================================
+ * 4. Accessibility & Screen Reader Utilities
+ * ========================================== */
+/* Clean, bulletproof screen reader utility to hide elements visually while keeping them readable */
+.dd-sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border-width: 0 !important;
+}

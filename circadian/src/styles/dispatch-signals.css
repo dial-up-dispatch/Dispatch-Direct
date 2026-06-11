@@ -1,0 +1,192 @@
+/**
+ * Dispatch Direct — dispatch-signals.css
+ * Core semantic variable token contract and default signal fallbacks.
+ * 
+ * "Shared atmospheric systems, not duplicated app identities."
+ */
+
+:root {
+    /* ==========================================
+     * 1. Core Palette Base: Canonical 'The Deep'
+     * ========================================== */
+    --dd-bg: #0a080f;
+    --dd-surface: #150f1e;
+    --dd-surface-elevated: #21172f;
+    --dd-surface-ghost: rgba(21, 15, 30, 0.4);
+
+    --dd-text: #e8d4e0;
+    --dd-text-bright: #ffffff;
+    --dd-text-dim: #90789a;
+    --dd-text-muted: #4a3550;
+
+    --dd-accent: #9b7fcb;
+    --dd-accent-soft: #7d4f6b;
+    --dd-accent-glow: rgba(155, 127, 203, 0.2);
+
+    --dd-border: #2c1e3f;
+    --dd-border-active: #9b7fcb;
+    --dd-border-muted: #1e152d;
+
+    /* Semantic Status Indicators */
+    --dd-danger: #ea4c60;
+    --dd-success: #5fffd7;
+    --dd-warning: #ffb300;
+
+    /* Font stack */
+    --dd-font-mono: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --dd-font-serif: 'EB Garamond', ui-serif, Georgia, serif;
+
+    /* ==========================================
+     * 2. CRT Atmosphere & Phosphor Calibration
+     * ========================================== */
+    --dd-scanline-tint: rgba(155, 127, 203, 0.03);
+    --dd-scanline-height: 4px;
+    --dd-noise-opacity: 0.035;
+    --dd-noise-blend-mode: overlay;
+    --dd-vignette-opacity: 0.35;
+    --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+    --dd-active-glow: 0 0 8px var(--dd-accent), 0 0 16px var(--dd-accent-glow);
+
+    /* ==========================================
+     * 3. Sizing & Structural Tokens
+     * ========================================== */
+    --dd-radius-sm: 2px;
+    --dd-radius-md: 4px;
+    --dd-radius-lg: 8px;
+
+    --dd-space-xs: 0.25rem;
+    --dd-space-sm: 0.5rem;
+    --dd-space-md: 1rem;
+    --dd-space-lg: 1.5rem;
+
+    /* ==========================================
+     * 4. Motion & Transition Grammar
+     * ========================================== */
+    --dd-transition-fast: 120ms ease;
+    --dd-transition-medium: 240ms ease-out;
+    --dd-transition-slow: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================
+ * 5. Reusable Phosphor Signal Themes (Overrides)
+ * ========================================== */
+
+/* Moss: The canonical cyber-phosphor cyan-teal scheme */
+.dd-theme-moss, [data-theme="moss"] {
+    --dd-bg: #0a0f0f;
+    --dd-surface: #0f1717;
+    --dd-surface-elevated: #162424;
+    --dd-surface-ghost: rgba(15, 31, 31, 0.4);
+
+    --dd-text: #e0f0f0;
+    --dd-text-bright: #ffffff;
+    --dd-text-dim: #7da49d;
+    --dd-text-muted: #3a8a7a;
+
+    --dd-accent: #5fffd7;
+    --dd-accent-soft: #3dd4b0;
+    --dd-accent-glow: rgba(95, 255, 215, 0.2);
+
+    --dd-border: #1a3a3a;
+    --dd-border-active: #5fffd7;
+    --dd-border-muted: #0d1e1e;
+
+    --dd-scanline-tint: rgba(95, 255, 215, 0.03);
+    --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+}
+
+/* Amber: Late night vintage cathode glow */
+.dd-theme-amber, [data-theme="amber"] {
+    --dd-bg: #0f0d08;
+    --dd-surface: #17130c;
+    --dd-surface-elevated: #241c10;
+    --dd-surface-ghost: rgba(20, 16, 8, 0.4);
+
+    --dd-text: #d4c8a0;
+    --dd-text-bright: #f0e4c0;
+    --dd-text-dim: #a59773;
+    --dd-text-muted: #7d7050;
+
+    --dd-accent: #ffb300;
+    --dd-accent-soft: #d48a00;
+    --dd-accent-glow: rgba(255, 179, 0, 0.2);
+
+    --dd-border: #332b14;
+    --dd-border-active: #ffb300;
+    --dd-border-muted: #1c170a;
+
+    --dd-scanline-tint: rgba(255, 179, 0, 0.03);
+    --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+}
+
+/* Periwinkle: Deep neon-indigo atmospheric static */
+.dd-theme-periwinkle, [data-theme="periwinkle"] {
+    --dd-bg: #0b0c12;
+    --dd-surface: #121420;
+    --dd-surface-elevated: #1a1e30;
+    --dd-surface-ghost: rgba(14, 16, 24, 0.4);
+
+    --dd-text: #b8c0d8;
+    --dd-text-bright: #d8e0f8;
+    --dd-text-dim: #8892b0;
+    --dd-text-muted: #606880;
+
+    --dd-accent: #8090d8;
+    --dd-accent-soft: #6070c8;
+    --dd-accent-glow: rgba(128, 144, 216, 0.2);
+
+    --dd-border: #252d45;
+    --dd-border-active: #8090d8;
+    --dd-border-muted: #121622;
+
+    --dd-scanline-tint: rgba(128, 144, 216, 0.03);
+    --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+}
+
+/* Algae-Copper: Rust-phosphor static frequencies */
+.dd-theme-algae-copper, [data-theme="algae-copper"] {
+    --dd-bg: #090e0c;
+    --dd-surface: #101613;
+    --dd-surface-elevated: #16201b;
+    --dd-surface-ghost: rgba(12, 18, 16, 0.4);
+
+    --dd-text: #b0cca8;
+    --dd-text-bright: #d0ecca;
+    --dd-text-dim: #7da072;
+    --dd-text-muted: #587050;
+
+    --dd-accent: #90c888;
+    --dd-accent-soft: #7ab870;
+    --dd-accent-glow: rgba(144, 200, 136, 0.2);
+
+    --dd-border: #1e3020;
+    --dd-border-active: #90c888;
+    --dd-border-muted: #0d160e;
+
+    --dd-scanline-tint: rgba(144, 200, 136, 0.03);
+    --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+}
+
+/* The Expanse: Deep space cold blue, highly minimal */
+.dd-theme-expanse, [data-theme="expanse"] {
+    --dd-bg: #07090f;
+    --dd-surface: #0b0d14;
+    --dd-surface-elevated: #121520;
+    --dd-surface-ghost: rgba(11, 13, 20, 0.4);
+
+    --dd-text: #c8d4e8;
+    --dd-text-bright: #e8f0fc;
+    --dd-text-dim: #7f90aa;
+    --dd-text-muted: #3a4558;
+
+    --dd-accent: #4a7ab5;
+    --dd-accent-soft: #385d8d;
+    --dd-accent-glow: rgba(74, 122, 181, 0.2);
+
+    --dd-border: #1a1d2e;
+    --dd-border-active: #4a7ab5;
+    --dd-border-muted: #0c0e16;
+
+    --dd-scanline-tint: rgba(74, 122, 181, 0.03);
+    --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+}

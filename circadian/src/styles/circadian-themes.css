@@ -1,0 +1,87 @@
+/* ==========================================
+ * >circadian_ Specific Custom Phosphor Signal Themes
+ * ========================================== */
+
+/* last-call (default) — whiskey sour amber glow on burnt coffee depths */
+[data-theme="last-call"] {
+  --dd-bg: #100c08;
+  --dd-surface: #1c1410;
+  --dd-surface-elevated: #241a12;
+  --dd-surface-ghost: rgba(28, 20, 16, 0.4);
+  --dd-text: #EACEAA;
+  --dd-text-bright: #f5e4c8;
+  --dd-text-dim: #a08060;
+  --dd-text-muted: #5a3e28;
+  --dd-accent: #D39858;
+  --dd-accent-soft: #a87040;
+  --dd-accent-glow: rgba(211, 152, 88, 0.18);
+  --dd-border: #34150F;
+  --dd-border-active: #D39858;
+  --dd-border-muted: #1e0e08;
+  --dd-scanline-tint: rgba(211, 152, 88, 0.03);
+  --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+  --dd-active-glow: 0 0 8px var(--dd-accent), 0 0 16px var(--dd-accent-glow);
+}
+
+/* dusk-greenhouse — crushed verdure green on obsidian pestle floor */
+[data-theme="dusk-greenhouse"] {
+  --dd-bg: #0a0e0d;
+  --dd-surface: #111a14;
+  --dd-surface-elevated: #18201a;
+  --dd-surface-ghost: rgba(17, 26, 20, 0.4);
+  --dd-text: #c8d4b8;
+  --dd-text-bright: #e0ead0;
+  --dd-text-dim: #7a9468;
+  --dd-text-muted: #403542;
+  --dd-accent: #90A875;
+  --dd-accent-soft: #6a8555;
+  --dd-accent-glow: rgba(144, 168, 117, 0.18);
+  --dd-border: #1e2e20;
+  --dd-border-active: #90A875;
+  --dd-border-muted: #0d160e;
+  --dd-scanline-tint: rgba(144, 168, 117, 0.03);
+  --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+  --dd-active-glow: 0 0 8px var(--dd-accent), 0 0 16px var(--dd-accent-glow);
+}
+
+/* wet-cobblestone — smog gray text, raven feather base, robeson rose mid tones */
+[data-theme="wet-cobblestone"] {
+  --dd-bg: #0d0a0b;
+  --dd-surface: #160e0d;
+  --dd-surface-elevated: #221E1C;
+  --dd-surface-ghost: rgba(22, 14, 13, 0.4);
+  --dd-text: #9F9F9D;
+  --dd-text-bright: #c8c8c6;
+  --dd-text-dim: #7a7270;
+  --dd-text-muted: #3a2e2c;
+  --dd-accent: #9F9F9D;
+  --dd-accent-soft: #655150;
+  --dd-accent-glow: rgba(159, 159, 157, 0.14);
+  --dd-border: #452F29;
+  --dd-border-active: #9F9F9D;
+  --dd-border-muted: #160e0d;
+  --dd-scanline-tint: rgba(159, 159, 157, 0.025);
+  --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+  --dd-active-glow: 0 0 8px var(--dd-accent), 0 0 16px var(--dd-accent-glow);
+}
+
+/* old-film — barn owl text on nuln oil black, burnt crimson in the surfaces */
+[data-theme="old-film"] {
+  --dd-bg: #130F0D;
+  --dd-surface: #1a1110;
+  --dd-surface-elevated: #221618;
+  --dd-surface-ghost: rgba(26, 17, 16, 0.4);
+  --dd-text: #C4C1B8;
+  --dd-text-bright: #dedad2;
+  --dd-text-dim: #8a8680;
+  --dd-text-muted: #3a2e2c;
+  --dd-accent: #635B51;
+  --dd-accent-soft: #551F22;
+  --dd-accent-glow: rgba(99, 91, 81, 0.15);
+  --dd-border: #301415;
+  --dd-border-active: #635B51;
+  --dd-border-muted: #180f10;
+  --dd-scanline-tint: rgba(99, 91, 81, 0.025);
+  --dd-shadow-glow: 0 0 10px var(--dd-accent-glow);
+  --dd-active-glow: 0 0 8px var(--dd-accent), 0 0 16px var(--dd-accent-glow);
+}

@@ -1,0 +1,138 @@
+/**
+ * Dispatch Direct — dispatch-typography.css
+ * Typographic grammar, custom font loading, and layout type utilities.
+ * 
+ * Bundles local Space Mono for offline, local-first browser extension environments.
+ */
+
+/* ==========================================
+ * 1. Offline Local Font Face Structure
+ * ========================================== */
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono/SpaceMono-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono/SpaceMono-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono/SpaceMono-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono/SpaceMono-BoldItalic.woff2') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../fonts/EBGaramond/EBGaramond-VariableFont_wght.woff2') format('woff2');
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../fonts/EBGaramond/EBGaramond-Italic-VariableFont_wght.woff2') format('woff2');
+    font-weight: 400 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+/* ==========================================
+ * 2. Typographic Utility Classes (Opt-in)
+ * ========================================== */
+
+/* Use local Space Mono stack with robust falls */
+.dd-font-mono {
+    font-family: var(--dd-font-mono);
+}
+
+/* Optional serif stack pairing for slower, analog reading layout rhythms */
+.dd-font-serif {
+    font-family: var(--dd-font-serif);
+}
+
+/* Text smoothing helper */
+.dd-text-smooth {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Typographic scale modifiers */
+.dd-text-xs {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+}
+
+.dd-text-sm {
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+}
+
+.dd-text-md {
+    font-size: 1rem;
+}
+
+.dd-text-lg {
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+/* Tone Helpers */
+.dd-text-primary {
+    color: var(--dd-text);
+}
+
+.dd-text-dimmed {
+    color: var(--dd-text-dim);
+}
+
+.dd-text-muted {
+    color: var(--dd-text-muted);
+}
+
+.dd-text-bright {
+    color: var(--dd-text-bright);
+}
+
+.dd-text-accent {
+    color: var(--dd-accent);
+}
+
+/* Formatting Helpers */
+.dd-text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.dd-text-lowercase {
+    text-transform: lowercase;
+}
+
+.dd-text-bold {
+    font-weight: 700;
+}
+
+.dd-text-italic {
+    font-style: italic;
+}

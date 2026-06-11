@@ -1,0 +1,309 @@
+/**
+ * Dispatch Direct — dispatch-motion.css
+ * Reusable motion grammar, transition speeds, keyframes, and accessibility safeguards.
+ * 
+ * "Low-fatigue, restrained, atmospheric motion."
+ */
+
+/* ==========================================
+ * 1. Motion Keyframes & Grammar
+ * ========================================== */
+
+/* Block Cursor Blink */
+@keyframes dd-cursor-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.dd-cursor-blink {
+    animation: dd-cursor-blink 1s step-end infinite;
+}
+
+/* CRT Screen Power-On Flicker */
+@keyframes dd-screen-flicker {
+    0%, 100% { opacity: 1; }
+    45%      { opacity: 0.98; }
+    46%      { opacity: 0.94; }
+    47%      { opacity: 0.99; }
+    48%      { opacity: 0.96; }
+    49%      { opacity: 1; }
+    90%      { opacity: 1; }
+    91%      { opacity: 0.97; }
+    92%      { opacity: 0.99; }
+    93%      { opacity: 0.95; }
+    94%      { opacity: 1; }
+}
+
+.dd-screen-flicker {
+    animation: dd-screen-flicker 8s ease-in-out infinite;
+}
+
+/* CRT Warmup Phosphor Line Instability Flicker */
+@keyframes dd-crt-warmup-flicker {
+    0%, 10%   { opacity: 0; }
+    12%       { opacity: 1; }
+    15%       { opacity: 0.15; }
+    18%       { opacity: 0.85; }
+    22%       { opacity: 0.05; }
+    26%       { opacity: 1; }
+    30%       { opacity: 0.3; }
+    35%       { opacity: 0.95; }
+    45%       { opacity: 1; }
+    70%       { opacity: 0.9; }
+    100%      { opacity: 0; }
+}
+
+/* Evaporating/Blurring Text Dissolve (Void & Dump Capture) */
+@keyframes dd-text-dissolve {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-8px);
+        filter: blur(4px);
+    }
+}
+
+.dd-animate-dissolve {
+    animation: dd-text-dissolve var(--dd-transition-medium) forwards;
+}
+
+/* Scanline Sweeper Sweep (during Dissolves) */
+@keyframes dd-scanline-sweep {
+    0% {
+        transform: translateY(100%);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.dd-animate-sweep {
+    animation: dd-scanline-sweep 350ms ease-out forwards;
+}
+
+/* Vertical Wipe Transitions (Wipe Screen transitions) */
+@keyframes dd-wipe-up {
+    0%   { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+}
+
+@keyframes dd-wipe-down {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.dd-wipe-up {
+    animation: dd-wipe-up var(--dd-transition-slow) forwards;
+}
+
+.dd-wipe-down {
+    animation: dd-wipe-down var(--dd-transition-slow) forwards;
+}
+
+/* Pulse/Status indicator glow */
+@keyframes dd-status-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+}
+
+.dd-status-pulse {
+    animation: dd-status-pulse 3s ease-in-out infinite;
+}
+
+.dd-status-pulse.dd-standby {
+    animation: dd-status-pulse 3s ease-in-out infinite;
+}
+
+.dd-status-pulse.dd-active {
+    animation: dd-status-pulse 1s ease-in-out infinite;
+    color: var(--dd-accent);
+    text-shadow: 0 0 4px var(--dd-accent-glow);
+}
+
+.dd-status-pulse.dd-paused {
+    animation: none;
+    opacity: 0.5;
+}
+
+
+
+
+/* ==========================================
+ * 1.5. Settings Slide & CRT Collapse Animations
+ * ========================================== */
+
+/* Settings Panel Slide Transitions */
+@keyframes dd-slide-in-right {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes dd-slide-out-right {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+.dd-slide-in {
+    animation: dd-slide-in-right 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dd-slide-out {
+    animation: dd-slide-out-right 200ms cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+/* CRT Power-Off Collapse Animations */
+@keyframes dd-collapse-backdrop {
+    0% { background-color: rgba(0, 0, 0, 0); }
+    100% { background-color: rgba(0, 0, 0, 0.98); }
+}
+
+@keyframes dd-collapse-line {
+    0% {
+        transform: scaleX(0) scaleY(1);
+        opacity: 0;
+    }
+    10% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 1;
+    }
+    40% {
+        transform: scaleX(1) scaleY(0.08);
+        opacity: 1;
+    }
+    70% {
+        transform: scaleX(0.01) scaleY(0.08);
+        opacity: 1;
+    }
+    85% {
+        transform: scaleX(0.01) scaleY(0.01);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(0) scaleY(0);
+        opacity: 0;
+    }
+}
+
+@keyframes dd-collapse-dot {
+    0%, 65% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    72% {
+        transform: scale(1.6);
+        opacity: 1;
+    }
+    82% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.dd-collapse-line {
+    animation: dd-collapse-line 600ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.dd-collapse-dot {
+    animation: dd-collapse-dot 800ms ease-out forwards;
+}
+
+.dd-collapse-backdrop {
+    animation: dd-collapse-backdrop 150ms ease-out forwards;
+}
+
+/* CRT Power-off Static Discharge Screen Jitter */
+@keyframes dd-jitter {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-2px); }
+    40%, 80% { transform: translateX(2px); }
+}
+
+.dd-jitter {
+    animation: dd-jitter 150ms ease-in-out;
+}
+
+/* ==========================================
+ * 2. General Transition Helpers
+ * ========================================== */
+.dd-transition-fast {
+    transition: all var(--dd-transition-fast);
+}
+
+.dd-transition-medium {
+    transition: all var(--dd-transition-medium);
+}
+
+.dd-transition-slow {
+    transition: all var(--dd-transition-slow);
+}
+
+/* ==========================================
+ * 3. Accessibility: prefers-reduced-motion Overrides
+ * ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    /* Disable breathing and flicker effects */
+    .dd-screen-effects,
+    .dd-screen-flicker,
+    .dd-status-pulse {
+        animation: none !important;
+    }
+
+    /* Convert structural motion to clean, low-fatigue crossfades */
+    .dd-animate-dissolve {
+        animation: dd-fade-simple 300ms ease-out forwards !important;
+    }
+
+    .dd-animate-sweep {
+        animation: none !important;
+        opacity: 0 !important;
+    }
+
+    .dd-wipe-up, .dd-wipe-down {
+        animation: dd-fade-simple 200ms ease-out forwards !important;
+    }
+
+    .dd-slide-in {
+        animation: dd-fade-in-simple 200ms ease-out forwards !important;
+    }
+
+    .dd-slide-out {
+        animation: dd-fade-simple 200ms ease-out forwards !important;
+    }
+
+    .dd-collapse-line,
+    .dd-collapse-dot {
+        animation: none !important;
+        display: none !important;
+    }
+
+    .dd-crt-warmup-overlay::before {
+        animation-name: dd-crt-line-collapse !important;
+    }
+
+    .dd-jitter {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    /* Fallback crossfade keyframe */
+    @keyframes dd-fade-simple {
+        0%   { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    @keyframes dd-fade-in-simple {
+        0%   { opacity: 0; }
+        100% { opacity: 1; }
+    }
+}
+
